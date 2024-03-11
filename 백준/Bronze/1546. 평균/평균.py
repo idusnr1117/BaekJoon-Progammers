@@ -7,7 +7,7 @@ for i in range(n):
 
 max_score = max(a)
 for i in a:
-    i /= max_score * 100
+    i = i / max_score * 100
     ans += i
 ans /= n
 print(ans)
