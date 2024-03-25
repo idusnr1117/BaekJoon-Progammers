@@ -3,6 +3,7 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+    	
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String word = reader.readLine().toUpperCase();
         
@@ -14,31 +15,42 @@ public class Main {
         
         boolean multipleMax = false;
 
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 26; i++)
+        {
             alphabet[i] = (char) (i + 65);
         }
 
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++)
+        {
             char c = word.charAt(i);
-            if (c >= 'A' && c <= 'Z') {
+            if (c >= 'A' && c <= 'Z')
+            {
                 wordCount[c - 'A']++;
             }
         }
 
-        for (int i = 0; i < 26; i++) {
-            if (wordCount[i] > maxCount) {
+        for (int i = 0; i < 26; i++)
+        {
+            if (wordCount[i] > maxCount)
+            {
                 maxCount = wordCount[i];
                 maxIndex = i;
                 multipleMax = false;
-            } else if (wordCount[i] == maxCount) {
+            }
+            else if (wordCount[i] == maxCount)
+            {
                 multipleMax = true;
             }
         }
 
-        if (multipleMax) {
+        if (multipleMax)
+        {
             System.out.println("?");
-        } else {
+        }
+        else
+        {
             System.out.println(alphabet[maxIndex]);
         }
+        
    }
 }
