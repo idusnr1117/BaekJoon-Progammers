@@ -7,54 +7,53 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String[] sizes = br.readLine().split(" ");
+        
         int n = Integer.parseInt(sizes[0]);
         int m = Integer.parseInt(sizes[1]);
 
         char[][] castle = new char[n][m];
 
-        for (int i = 0; i < n; i++) 
+        for (int i = 0; i < n; i++)
         {
-            String line = br.readLine();
-            for (int j = 0; j < m; j++)
-            {
-                castle[i][j] = line.charAt(j);
-            }
+            castle[i] = br.readLine().toCharArray();
         }
 
-        int row_cnt = 0;
-        int col_cnt = 0;
+        int rowCnt = 0;
+        int colCnt = 0;
 
         for (int i = 0; i < n; i++)
         {
-            boolean need_guard = true;
+            boolean needGuardRow = true;
             for (int j = 0; j < m; j++)
             {
                 if (castle[i][j] == 'X')
                 {
-                    need_guard = false;
+                    needGuardRow = false;
                     break;
                 }
             }
-            if (need_guard) row_cnt++;
+            if (needGuardRow) rowCnt++;
         }
 
         for (int j = 0; j < m; j++)
         {
-            boolean need_guard = true;
+            boolean needGuardCol = true;
             for (int i = 0; i < n; i++)
             {
                 if (castle[i][j] == 'X')
                 {
-                    need_guard = false;
+                    needGuardCol = false;
                     break;
                 }
             }
-            if (need_guard)
+            
+            if (needGuardCol)
             {
-            	col_cnt++;
+            	colCnt++;
             }
+            
         }
 
-        System.out.println(Math.max(row_cnt, col_cnt));
+        System.out.println(Math.max(rowCnt, colCnt));
     }
 }
