@@ -1,61 +1,53 @@
 import java.io.*;
 
-public class Main{
+public class Main {
     
     public static void main(String[] args) throws IOException {
     	
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] sizes = br.readLine().split(" ");
+        String[] sizes = bf.readLine().split(" ");
         int n = Integer.parseInt(sizes[0]);
         int m = Integer.parseInt(sizes[1]);
 
-        char[][] castle = new char[n][m];
+        char[][] map = new char[n][m];
+		
+		for (int i = 0; i < n; i++)
+		{
+			map[i] = bf.readLine().toCharArray();
+		}
 
-        for (int i = 0; i < n; i++) 
-        {
-            String line = br.readLine();
-            for (int j = 0; j < m; j++)
-            {
-                castle[i][j] = line.charAt(j);
-            }
-        }
-
-        int row_cnt = 0;
-        int col_cnt = 0;
-
-        for (int i = 0; i < n; i++)
-        {
-            boolean need_guard = true;
-            for (int j = 0; j < m; j++)
-            {
-                if (castle[i][j] == 'X')
-                {
-                    need_guard = false;
-                    break;
-                }
-            }
-            if (need_guard) row_cnt++;
-        }
-
-        for (int i = 0; i < m; i++)
-        {
-            boolean need_guard = true;
-            for (int j = 0; j < n; j++)
-            {
-                if (castle[j][i] == 'X')
-                {
-                    need_guard = false;
-                    break;
-                }
-            }
-            if (need_guard)
-            {
-            	col_cnt++;
-            }
-        }
-
-        System.out.println(Math.max(row_cnt, col_cnt));
-        
+		int row = 0;
+		int col = 0;
+		
+		for (int i = 0; i < n; i++)
+		{
+			boolean have_x = false;
+			for (int j = 0; j < m; j++)
+			{
+				if (map[i][j] == 'X')
+				{
+					have_x = true;
+					break;
+				}
+			}
+			if (!have_x) row++;
+		}
+		
+		for (int j = 0; j < m; j++)
+		{
+			boolean have_x = false;
+			for (int i = 0; i < n; i++)
+			{
+				if (map[i][j] == 'X')
+				{
+					have_x = true;
+					break;
+				}
+			}
+			if (!have_x) col++;
+		}
+		
+		System.out.println(Math.max(row, col));
     }
 }
