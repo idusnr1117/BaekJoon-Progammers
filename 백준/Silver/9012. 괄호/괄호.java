@@ -7,7 +7,7 @@ public class Main {
     
     public static void main(String[] args) throws IOException {
         
-    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(bf.readLine());
 		char ch;
 		
@@ -21,15 +21,13 @@ public class Main {
 				if(ch == '(') {
 					s.push(ch);
 				}
-				else
+				else if(s.isEmpty())
 				{
-					if(s.isEmpty())
-					{
-						s.push(ch);
-						break;
-					}
-					else s.pop();
-				}
+					s.push(ch);
+					break;
+                }
+				else s.pop();
+				
 			}
 			if(s.isEmpty()) System.out.println("YES");
 			else System.out.println("NO");
