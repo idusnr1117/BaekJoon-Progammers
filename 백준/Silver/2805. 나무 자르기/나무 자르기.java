@@ -24,12 +24,15 @@ public class Main {
         int left = 0;
         int right = woods[N - 1];
 
-        while (left <= right) {
+        while (left <= right)
+        {
             int mid = (left + right) / 2;
             Long sum = 0L;
 
-            for (int wood : woods) {
-                if (wood > mid) {
+            for (int wood : woods)
+            {
+                if (wood > mid)
+                {
                     sum += wood - mid;
                 }
             }
