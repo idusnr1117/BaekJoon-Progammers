@@ -1,0 +1,3 @@
+ID = input()
+
+print(ID + '??!')
