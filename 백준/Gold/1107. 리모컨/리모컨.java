@@ -28,7 +28,7 @@ public class Main {
 
         int min = Integer.MAX_VALUE;
 
-        for(int i = 0; i <= 999999; i++)
+        for(int i = 0; i <= 500000 + N; i++)
         {
             String str = String.valueOf(i);
             boolean check = true;
@@ -43,7 +43,7 @@ public class Main {
 
             if(!check) continue;
 
-            cnt = str.length() + Math.abs(i - N);
+            cnt = str.length() + Math.abs(i - N); // 해당 채널로 이동하는 데 필요한 버튼 클릭 횟수 + -만
 
             if(cnt < min)
             {
