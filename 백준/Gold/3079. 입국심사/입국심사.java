@@ -21,12 +21,12 @@ public class Main {
             times[i] = Long.parseLong(br.readLine());
         }
         Arrays.sort(times);
-        long min = times[0];
-        long max = times[times.length - 1] * M;
+        long left = times[0];
+        long right = times[times.length - 1] * M;
 
-        while (min <= max)
+        while (left <= right)
         {
-            long mid = (min + max) / 2;
+            long mid = (left + right) / 2;
             long sum = 0;
             for (int i = 0; i < N; i++)
             {
@@ -38,15 +38,15 @@ public class Main {
             }
             if (sum < M)
             {
-                min = mid + 1;
+                left = mid + 1;
             }
             else
             {
-                max = mid - 1;
+                right = mid - 1;
             }
         }
 
-        System.out.println(min);
+        System.out.println(left);
 
     }
 }
