@@ -20,11 +20,10 @@ public class Main {
         ArrayList<String> AL_promises = new ArrayList<>(Arrays.asList(promises));
 
         int N = Integer.parseInt(br.readLine());
-        String promise;
 
         for (int i = 0; i < N; i++)
         {
-            promise = br.readLine();
+            String promise = br.readLine();
             if(!AL_promises.contains(promise))
             {
                 System.out.println("Yes");
