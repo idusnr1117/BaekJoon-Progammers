@@ -11,18 +11,13 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
-        int sqrt = (int) Math.sqrt(N);
         ArrayList<Integer> arr = new ArrayList<>();
 
-        for (int i = 1; i <= sqrt; i++)
+        for (int i = 1; i <= N; i++)
         {
             if (N % i == 0)
             {
                 arr.add(i);
-                if (N / i != i)
-                {
-                    arr.add(N / i);
-                }
             }
         }
 
