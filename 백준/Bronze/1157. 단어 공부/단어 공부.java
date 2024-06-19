@@ -1,56 +1,38 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-    	
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String word = reader.readLine().toUpperCase();
-        
-        char[] alphabet = new char[26];
-        int[] wordCount = new int[26];
 
-        int maxCount = 0;
-        int maxIndex = -1;
-        
-        boolean multipleMax = false;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for (int i = 0; i < 26; i++)
+        String word = br.readLine().trim().toUpperCase();
+        int[] alphabet_count = new int[26];
+
+        for (char ch : word.toCharArray())
         {
-            alphabet[i] = (char) (i + 65);
+            alphabet_count[ch - 'A']++;
         }
 
-        for (int i = 0; i < word.length(); i++)
-        {
-            char c = word.charAt(i);
-            if (c >= 'A' && c <= 'Z')
-            {
-                wordCount[c - 'A']++;
-            }
-        }
+        int max_count = -1;
+        char result = '?';
 
         for (int i = 0; i < 26; i++)
         {
-            if (wordCount[i] > maxCount)
+            if (alphabet_count[i] > max_count)
             {
-                maxCount = wordCount[i];
-                maxIndex = i;
-                multipleMax = false;
+                max_count = alphabet_count[i];
+                result = (char) ('A' + i);
             }
-            else if (wordCount[i] == maxCount)
+            else if (alphabet_count[i] == max_count)
             {
-                multipleMax = true;
+                result = '?';
             }
         }
 
-        if (multipleMax)
-        {
-            System.out.println("?");
-        }
-        else
-        {
-            System.out.println(alphabet[maxIndex]);
-        }
-        
-   }
+        System.out.println(result);
+
+    }
 }
