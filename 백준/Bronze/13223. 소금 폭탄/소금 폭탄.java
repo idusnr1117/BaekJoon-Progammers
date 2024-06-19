@@ -1,32 +1,23 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
         
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        
-        String start_time[] = bf.readLine().split(":");
-        String end_time[] = bf.readLine().split(":");
-        
-        int hours[] = {Integer.parseInt(start_time[0]), Integer.parseInt(end_time[0])};
-        int minutes[] = {Integer.parseInt(start_time[1]), Integer.parseInt(end_time[1])};
-        int seconds[] = {Integer.parseInt(start_time[2]), Integer.parseInt(end_time[2])};
-        
-        int start =  hours[0] * 3600 + minutes[0] * 60 + seconds[0];
-        int end = hours[1] * 3600 + minutes[1] * 60 + seconds[1];
-        
-        int result = end - start;
-        
-        if(result <= 0)
-            result += 24 * 3600;
-        
-        int hour = result / 3600;
-        int minute = result % 3600 / 60;
-        int second = result % 60;
 
-        
-        System.out.printf("%02d:%02d:%02d", hour, minute, second);
+        String[] start_time = bf.readLine().split(":");
+        String[] end_time = bf.readLine().split(":");
+
+        int start_seconds = Integer.parseInt(start_time[0]) * 3600 + Integer.parseInt(start_time[1]) * 60 + Integer.parseInt(start_time[2]);
+        int end_seconds = Integer.parseInt(end_time[0]) * 3600 + Integer.parseInt(end_time[1]) * 60 + Integer.parseInt(end_time[2]);
+
+        int result_seconds = end_seconds - start_seconds;
+        if (result_seconds <= 0) result_seconds += 86400;
+
+        System.out.printf("%02d:%02d:%02d", result_seconds / 3600, (result_seconds % 3600) / 60, result_seconds % 60);
         
     }
 }
