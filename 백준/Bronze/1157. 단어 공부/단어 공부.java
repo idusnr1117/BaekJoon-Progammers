@@ -8,7 +8,7 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String word = br.readLine().trim().toUpperCase();
+        String word = br.readLine().toUpperCase();
         int[] alphabet_count = new int[26];
 
         for (char ch : word.toCharArray())
