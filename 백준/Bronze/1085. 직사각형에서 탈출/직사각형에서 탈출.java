@@ -14,17 +14,14 @@ public class Main {
 
         int x = Integer.parseInt(st.nextToken());
         int y = Integer.parseInt(st.nextToken());
-        int w = Integer.parseInt(st.nextToken());
-        int h = Integer.parseInt(st.nextToken());
-
-        int w2 = w - x;
-        int h2 = h - y;
+        int w = Integer.parseInt(st.nextToken()) - x;
+        int h = Integer.parseInt(st.nextToken()) - y;
 
         ArrayList<Integer> nums = new ArrayList<>();
         nums.add(x);
         nums.add(y);
-        nums.add(w2);
-        nums.add(h2);
+        nums.add(w);
+        nums.add(h);
 
         System.out.println(Collections.min(nums));
 
