@@ -14,16 +14,12 @@ public class Main {
 
         for (int i = 0; i < N; i++)
         {
-            String str = br.readLine();
-            if (!strings.contains(str))
-            {
-                strings.add(str);
-            }
+            strings.add(br.readLine());
         }
 
         Collections.sort(strings);
 
-        strings = strings.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
+        strings = strings.stream().distinct().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
 
         for (int i = 0; i < strings.size(); i++)
         {
