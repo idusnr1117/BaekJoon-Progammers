@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
@@ -9,10 +10,10 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int A = Integer.parseInt(br.readLine());
-        int B = Integer.parseInt(br.readLine());
+        BigInteger A = new BigInteger(br.readLine());
+        BigInteger B = new BigInteger(br.readLine());
 
-        System.out.println(A * B);
+        System.out.println(A.multiply(B));
 
     }
 }
