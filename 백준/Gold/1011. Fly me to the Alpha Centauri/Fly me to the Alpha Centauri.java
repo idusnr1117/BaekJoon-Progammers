@@ -23,11 +23,11 @@ public class Main {
             // 45 -> 46 -> 47 -> 49 -> 50
 
             long dist = y - x;
-            long min = (long)Math.sqrt(dist);
+            long min = (long)Math.sqrt(dist); // 제곱근
 
             if (min == Math.sqrt(dist)) // 부동 소수점 연산으로 인해 정확한 정수인지 확인
                 System.out.println(2 * min - 1);
-            else if (dist <= min * min + min)
+            else if (dist <= Math.pow(min, 2) + min)
                 System.out.println(2 * min);
             else
                 System.out.println(2 * min + 1);
