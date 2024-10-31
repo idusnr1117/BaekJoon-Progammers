@@ -10,19 +10,19 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int sum = 0;
 
-        Stack<Integer> stack = new Stack<>();
-        stack.push(N);
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(N);
 
-        while (!stack.isEmpty())
+        while (!queue.isEmpty())
         {
-            int temp = stack.pop();
+            int temp = queue.poll();
             if (temp == 1) continue;
 
             int b = temp / 2;
             int c = temp - b;
             sum += b * c;
-            stack.push(b);
-            stack.push(c);
+            queue.add(b);
+            queue.add(c);
         }
 
         System.out.println(sum);
