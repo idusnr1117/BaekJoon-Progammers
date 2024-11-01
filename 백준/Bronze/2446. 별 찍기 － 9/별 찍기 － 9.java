@@ -13,13 +13,13 @@ public class Main {
 
         for (int i = first; 0 < i; i-=2)
         {
-            System.out.print(" ".repeat((Math.abs(first - i)) / 2));
+            System.out.print(" ".repeat((first - i) / 2));
             System.out.println("*".repeat(i));
         }
 
         for (int i = 3; i <= first; i+=2)
         {
-            System.out.print(" ".repeat((Math.abs(first - i)) / 2));
+            System.out.print(" ".repeat((first - i) / 2));
             System.out.println("*".repeat(i));
         }
 
