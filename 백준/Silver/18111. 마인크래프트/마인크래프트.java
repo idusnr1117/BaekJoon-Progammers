@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
@@ -37,8 +35,8 @@ public class Main {
                 for (int j = 0; j < M; j++)
                 {
                     int diff = land[i][j] - height;
-                    if (diff > 0) // 블록을 제거
-                    {
+                    if (diff > 0)
+                    { // 블록을 제거
                         time += 2 * diff;
                         inventory += diff;
                     }
