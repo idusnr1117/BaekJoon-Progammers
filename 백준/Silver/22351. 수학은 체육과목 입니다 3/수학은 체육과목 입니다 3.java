@@ -25,7 +25,7 @@ public class Main {
             if (sb.toString().equals(str))
             {
                 System.out.println(i + " " + (current - 1));
-                return;
+                break;
             }
         }
 
