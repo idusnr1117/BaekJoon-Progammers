@@ -14,18 +14,21 @@ public class Main {
         for (int i = Integer.parseInt(str.substring(0, 1)); i < 1000; i++)
         {
             StringBuilder sb = new StringBuilder();
-            int current = i;
-
-            while (sb.length() < len)
+            if (str.startsWith(String.valueOf(i)))
             {
-                sb.append(current);
-                current++;
-            }
+                int current = i;
 
-            if (sb.toString().equals(str))
-            {
-                System.out.println(i + " " + (current - 1));
-                break;
+                while (sb.length() < len)
+                {
+                    sb.append(current);
+                    current++;
+                }
+
+                if (sb.toString().equals(str))
+                {
+                    System.out.println(i + " " + (current - 1));
+                    break;
+                }
             }
         }
 
