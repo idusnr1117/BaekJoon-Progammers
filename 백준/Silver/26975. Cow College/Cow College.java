@@ -24,17 +24,16 @@ public class Main {
         while (iterator.hasNext())
         {
             int num = iterator.next();
-            long tempResult = (long) num * arrayList.size();
 
-            if (tempResult > result)
+            if (result < (long)num * arrayList.size())
             {
-                result = tempResult;
+                result = (long)num * arrayList.size();
                 N = num;
             }
             iterator.remove();
         }
 
         System.out.println(result + " " + N);
-
+        
     }
 }
