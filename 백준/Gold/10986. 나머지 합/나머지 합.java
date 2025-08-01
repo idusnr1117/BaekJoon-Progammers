@@ -1,38 +1,42 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        long cnt = 0;
-        long[] nums = new long[M];
+        long[] S = new long[N];
+        long[] C = new long[M];
 
-        int sum = 0;
         st = new StringTokenizer(br.readLine());
+
+        S[0] = Integer.parseInt(st.nextToken());
+        for (int i = 1; i < N; i++)
+            S[i] = S[i - 1] + Integer.parseInt(st.nextToken());
+
+        long answer = 0;
 
         for (int i = 0; i < N; i++)
         {
-            sum = (sum + Integer.parseInt(st.nextToken())) % M;
-            nums[sum]++;
+            int r = (int) (S[i] % M);
+            if (r == 0)
+                answer++;
+            C[r]++;
         }
 
         for (int i = 0; i < M; i++)
         {
-            if (nums[i] > 1)
-            {
-                cnt += nums[i] * (nums[i] - 1) / 2;
-            }
+            if (C[i] > 1)
+                answer += (C[i] * (C[i] - 1) / 2);
         }
 
-        cnt += nums[0];
-        System.out.println(cnt);
+        System.out.println(answer);
+
     }
 }
