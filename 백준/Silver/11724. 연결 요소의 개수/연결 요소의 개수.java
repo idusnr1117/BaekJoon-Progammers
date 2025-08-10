@@ -1,84 +1,60 @@
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-    private static final int start = 1;
-    private static int cnt = 0;
-    private static ArrayList<Integer>[] adjList;
-    private static boolean[] visited;
-    private static ArrayList<Integer> answer;
+    static ArrayList<Integer>[] A;
+    static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
-        int M = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int[][] graph = new int[M][2];
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
-        for (int i = 0; i < M; i++)
+        A = new ArrayList[n + 1];
+        visited = new boolean[n + 1];
+
+        for (int i = 1; i < n + 1; i++)
+            A[i] = new ArrayList<>();
+
+        for (int i = 0; i < m; i++)
         {
-            graph[i][0] = sc.nextInt();
-            graph[i][1] = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+
+            A[s].add(e);
+            A[e].add(s);
         }
 
-        solution(graph, N, M);
-        System.out.println(cnt);
-    }
-
-    public static void solution(int[][] graph, int N, int M) throws IOException
-    {
-        setting(graph, N);
-        dfs(start);
-
-        for (int i = 0; i < visited.length; i++)
+        int count = 0;
+        for (int i = 1; i < n + 1; i++)
         {
             if (!visited[i])
             {
-                cnt++;
+                count++;
                 dfs(i);
             }
         }
+
+        System.out.println(count);
+
     }
 
-    private static void setting(int[][] graph, int N)
+    static void dfs (int v)
     {
-        adjList = new ArrayList[N + 1];
-        for (int i = 0; i < adjList.length; i++)
-        {
-            adjList[i] = new ArrayList<>();
-        }
+        if (visited[v])
+            return;
 
-        for (int[] edge : graph)
+        visited[v] = true;
+        for (int i : A[v])
         {
-            adjList[edge[0]].add(edge[1]);
-            adjList[edge[1]].add(edge[0]);
-        }
-
-        for (ArrayList<Integer> list : adjList)
-        {
-            Collections.sort(list);
-        }
-
-        visited = new boolean[N + 1];
-        answer = new ArrayList<>();
-    }
-
-    private static void dfs(int start)
-    {
-        visited[start] = true;
-        answer.add(start);
-        for (int next : adjList[start])
-        {
-            if (!visited[next])
-            {
-                dfs(next);
-            }
+            if (!visited[i])
+                dfs(i);
         }
     }
-
 
 }
