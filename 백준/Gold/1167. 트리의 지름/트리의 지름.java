@@ -5,7 +5,7 @@ public class Main {
 
     static boolean[] visited;
     static int[] distacne;
-    static ArrayList<Edge> A[];
+    static ArrayList<Edge>[] A;
 
     static class Edge
     {
