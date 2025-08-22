@@ -47,7 +47,7 @@ public class Main {
             }
         }
 
-        // 반지름
+        // 절반
         BFS(1);
 
         int maxIndex = 1;
@@ -57,7 +57,7 @@ public class Main {
                 maxIndex = i;
         }
         
-        // 지름
+        // 절반 -> 전체
         distacne = new int[N + 1];
         visited  = new boolean[N + 1];
 
