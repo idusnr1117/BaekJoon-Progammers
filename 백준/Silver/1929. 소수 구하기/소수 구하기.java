@@ -9,38 +9,26 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
+        int M = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
 
-        for (int i = N; i <= K; i++)
+        int[] A = new int[N + 1];
+
+        for (int i = 2; i <= N; i++)
+            A[i] = i;
+
+        for (int i = 2; i <= Math.sqrt(N); i++)
         {
-            if (i == 1)
-            {
+            if (A[i] == 0)
                 continue;
-            }
-            if (i == 2)
-            {
-                System.out.println(i);
-                continue;
-            }
-            boolean sosu = true;
-            if (i % 2 == 0)
-            {
-                continue;
-            }
-            for (int j = 3; j <= Math.sqrt(i); j += 2)
-            {
-                if (i % j == 0)
-                {
-                    sosu = false;
-                    break;
-                }
-            }
-            if (sosu)
-            {
-                System.out.println(i);
-            }
+
+            for (int j = i + i; j <= N; j += i)
+                A[j] = 0;
         }
+
+        for (int i = M; i <= N; i++)
+            if (A[i] != 0)
+                System.out.println(A[i]);
 
     }
 }
